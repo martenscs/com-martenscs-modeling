@@ -1,0 +1,9 @@
+This project
+1. Downloads Tomcat and extracts it to a directory specified in the property file.
+2. Updates these files:
+a. server.xml for Tomcat changing Http port to 8980
+b. tomcat-users.xml for Tomcat adding user and passwd
+c. settings.xml for Maven ~/m2 updating the server information.
+If you want to change any of these values then feel free. If you have custom information in settings.xmk BEWARE!!! before running script.
+
+It works today....

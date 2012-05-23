@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tomcat-get" default="start" basedir=".">
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="lib/ant-contrib-1.0b3.jar" />
+		</classpath>
+	</taskdef>
+
+	<property file="setup.properties " />
+	<!--Load environmental variables-->
+	<property environment="env" />
+	<target name="start" depends="put-tomcat">
+		<if>
+			<not>
+				<http url="http://localhost:8980" />
+			</not>
+			<then>
+				<copy file="src/main/resources/server.xml" todir="${tomcat.server.home}/conf" />
+				<copy file="src/main/resources/tomcat-users.xml" todir="${tomcat.server.home}/conf" />
+				<copy file="src/main/resources/settings.xml" todir="${user.home}/.m2" />
+				<exec dir="${tomcat.server.home}" executable="${tomcat.server.home}//bin/startup.bat" failifexecutionfails="true" resultproperty="result" />
+			</then>
+		</if>
+	</target>
+
+	<!--makes the root directory if the directory is not found -->
+	<target name="make-root-dir" unless="is.tomcat.server.root">
+		<mkdir dir="${tomcat.server.root.dir}" />
+	</target>
+	<!--make the download directory if it doesn't exist -->
+	<target name="make-downloads-dir" unless="is.downloads.dir.available">
+		<mkdir dir="${server.downloads.dir}" />
+	</target>
+	<!--make the download directory if it doesn't exist -->
+	<target name="make-m2-dir" unless="is.downloads.dir.available">
+		<mkdir dir="${server.downloads.dir}" />
+	</target>
+	<!--Unzips the tomcat zip into the specified directory -->
+	<target name="put-tomcat" depends="get-tomcat" unless="is.tomcat.server.deployment.home" description="">
+		<!--Unzips the tomcat zip into the specified directory -->
+		<unzip src="${server.downloads.dir}/${tomcat.distro.filename}" dest="${tomcat.server.home}/.." />
+
+
+	</target>
+	<!--get tomcat zip file -->
+	<target name="get-tomcat" depends="make-root-dir,make-downloads-dir" unless="is.tomcat.distro.available" description="">
+		<!--make the home directory if it doesn't exist -->
+		<mkdir dir="${tomcat.server.home}" />
+		<!--download to the download directory -->
+		<get src="${tomcat.distro.url}" dest="${server.downloads.dir}/" />
+	</target>
+
+	<condition property="is.tomcat.server.root">
+		<available file="${tomcat.server.root.dir}" type="dir" />
+	</condition>
+
+	<condition property="is.tomcat.distro.available">
+		<available file="${server.downloads.dir}/${tomcat.distro.filename}" />
+	</condition>
+
+	<condition property="is.tomcat.server.deployment.home">
+		<available file="${tomcat.server.home}" />
+	</condition>
+	<condition property="is.m2.deployment.home">
+		<available file="${user.home}/.m3" />
+	</condition>
+</project>
