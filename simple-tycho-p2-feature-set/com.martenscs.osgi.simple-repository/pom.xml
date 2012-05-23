@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>com.martenscs.osgi.simple-repository</artifactId>
+	<packaging>eclipse-repository</packaging>
+	<parent>
+		<groupId>com.martenscs.osgi.simple</groupId>
+		<artifactId>com.martenscs.osgi.simple-build</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../com.martenscs.osgi.simple-build</relativePath>
+	</parent>
+	<properties>
+		<web-deploy-artifact>../com.martenscs.osgi.simple-website</web-deploy-artifact>
+	</properties>
+	<build>
+		<finalName>asaint-equinox-repository</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>install</id>
+						<phase>install</phase>
+						<configuration>
+							<tasks>
+								<delete dir="${web-deploy-artifact}/target" />
+								<delete dir="${web-deploy-artifact}/src/main/webapp/plugins" />
+								<delete dir="${web-deploy-artifact}/src/main/webapp/features" />
+								<delete>
+									<fileset dir="${web-deploy-artifact}/src/main/webapp/"
+										includes="*.jar" />
+								</delete>
+								<copy todir="${web-deploy-artifact}/src/main/webapp/">
+									<fileset dir="${project.build.directory}/repository" />
+								</copy>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
