@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Stockanalyser
+Bundle-SymbolicName: com.axmor.osgiexample.stockanalyser
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: com.axmor.osgiexample.stockanalyser.Activator
+Bundle-Vendor: AXMOR
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: com.axmor.osgiexample.providera,
+ com.axmor.osgiexample.providerb,
+ org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: com.axmor.osgiexample.stockanalyser

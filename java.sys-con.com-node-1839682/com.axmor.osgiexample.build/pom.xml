@@ -1,24 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.martenscs.osgi.simple</groupId>
-	<artifactId>com.martenscs.osgi.simple-build</artifactId>
+	<groupId>com.axmor.osgiexample</groupId>
+	<artifactId>com.axmor.osgiexample.build</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<modules>
-		<module>../com.martenscs.osgi.simple.plugin</module>
-		<module>../com.martenscs.osgi.simple</module>
-		<module>../com.martenscs.osgi.simple-website</module>
-		<module>../com.martenscs.osgi.simple-repository</module>
-	</modules>
 	<properties>
 		<!-- Latest Tycho version -->
 		<tycho-version>0.14.1</tycho-version>
 		<web-deploy-artifact>../com.martenscs.osgi.simple-website</web-deploy-artifact>
 	</properties>
 	<repositories>
-
+		<repository>
+			<id>Virgo</id>
+			<url>http://download.eclipse.org/virgo/updatesite/3.5.0.M02</url>
+			<layout>p2</layout>
+		</repository>
 		<!-- Indigo Repository -->
 		<repository>
 			<id>indigo</id>
@@ -26,7 +24,18 @@
 			<layout>p2</layout>
 		</repository>
 		<!-- Orbit Repository -->
-		
+		<repository>
+			<id>orbit</id>
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/S20120428190502/repository/</url>
+			<layout>p2</layout>
+		</repository>
+		<!-- Eclipse Product Repository -->
+		<repository>
+			<id>eclipse-product</id>
+			<url>http://download.eclipse.org/eclipse/updates/3.7</url>
+			<layout>p2</layout>
+		</repository>
+
 	</repositories>
 	<build>
 		<plugins>
@@ -86,4 +95,11 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<modules>
+		<module>../com.axmor.osgiexample.providera</module>
+		<module>../com.axmor.osgiexample.providerb</module>
+		<module>../com.axmor.osgiexample.stockanalyser</module>
+		<module>../com.axmor.osgiexample.tests</module>
+	</modules>
 </project>
