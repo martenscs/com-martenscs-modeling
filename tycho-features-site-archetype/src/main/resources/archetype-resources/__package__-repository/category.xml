@@ -1,0 +1,10 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/${package}_0.0.1.qualifier.jar" id="${package}" version="0.0.1.qualifier">
+      <category name="Default"/>
+   </feature>
+   <category-def name="Default" label="Default"/>
+</site>
