@@ -1,13 +1,16 @@
+#set($symbol_pound = '#')
+#set($symbol_dollar = '$')
+#set($symbol_escape = '\')
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?>
+<?pde version="3.6"?>
 
-<target name="external.target" sequenceNumber="1">
+<target name="${package}" sequenceNumber="4">
 <locations>
 <location includeAllPlatforms="true" includeMode="slicer" includeSource="false" type="InstallableUnit">
-<repository location="http://download.eclipse.org/releases/indigo/"/>
-</location>
-<location includeAllPlatforms="true" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id='osgi.core' version='0.0.0' />
+<unit id='osgi.enterprise' version='0.0.0' />
 <repository location="%PREPARE_URL%"/>
 </location>
 </locations>
 </target>
+

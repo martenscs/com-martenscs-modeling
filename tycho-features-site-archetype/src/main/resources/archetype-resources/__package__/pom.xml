@@ -13,5 +13,8 @@
 	</parent>
 	<artifactId>${package}</artifactId>
 	<packaging>eclipse-feature</packaging>
-	<name>_rootArtifactId__ Feature</name>
+	<name>${package} Feature</name>
+	<organization>
+		<name>${providerName}</name>
+	</organization>
 </project>

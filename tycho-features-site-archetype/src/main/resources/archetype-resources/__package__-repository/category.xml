@@ -4,7 +4,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature url="features/${package}_0.0.1.qualifier.jar" id="${package}" version="0.0.1.qualifier">
-      <category name="Default"/>
+      <category name="${categoryId}"/>
    </feature>
-   <category-def name="Default" label="Default"/>
+   <category-def name="${categoryId}" label="${categoryId}"/>
 </site>

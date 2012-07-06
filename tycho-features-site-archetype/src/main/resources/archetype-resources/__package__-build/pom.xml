@@ -1,8 +1,6 @@
-
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set(
-$symbol_escape = '\' )
+#set($symbol_pound = '#')
+#set($symbol_dollar = '$')
+#set($symbol_escape = '\')
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -10,8 +8,11 @@ $symbol_escape = '\' )
 	<artifactId>${package}-build</artifactId>
 	<packaging>pom</packaging>
 	<version>${version}</version>
+	<organization>
+		<name>${providerName}</name>
+	</organization>
 	<properties>
-		<tycho-version>0.14.1</tycho-version>
+		<tycho-version>0.15.0</tycho-version>
 		<web-deploy-artifact>../${package}-website</web-deploy-artifact>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.java.version>1.6</project.build.java.version>
@@ -69,24 +70,19 @@ $symbol_escape = '\' )
 				<configuration>
 					<resolver>p2</resolver>
 					<target>
-                        <artifact>
-                            <groupId>${package}</groupId>
-                            <artifactId>${package}-target</artifactId>
-                            <version>0.0.1-SNAPSHOT</version>
-                            <classifier>${package}</classifier>
-                        </artifact>
-                    </target>
+						<artifact>
+							<groupId>${package}</groupId>
+							<artifactId>${package}-target</artifactId>
+							<version>0.0.1-SNAPSHOT</version>
+							<classifier>${package}</classifier>
+						</artifact>
+					</target>
 					<ignoreTychoRepositories>true</ignoreTychoRepositories>
 					<environments>
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>
 							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
 						</environment>
 					</environments>
 				</configuration>
@@ -125,7 +121,7 @@ $symbol_escape = '\' )
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-antrun-plugin</artifactId>
-					<version>1.3</version>
+					<version>1.6</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

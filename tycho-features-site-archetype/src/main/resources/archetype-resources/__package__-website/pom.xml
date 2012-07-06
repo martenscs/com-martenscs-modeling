@@ -1,13 +1,15 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
+#set($symbol_pound = '#')
+#set($symbol_dollar = '$')
+#set($symbol_escape = '\')
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>${package}-website</artifactId>
 	<packaging>war</packaging>
 	<name>${package}-website Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<organization>
+		<name>${providerName}</name>
+	</organization>
 	<parent>
 		<groupId>${package}</groupId>
 		<artifactId>${package}-build</artifactId>
@@ -15,7 +17,7 @@
 		<relativePath>../${package}-build</relativePath>
 	</parent>
 	<properties>
-		<domain.context>${package}</domain.context>
+		<domain.context>${webContext}</domain.context>
 	</properties>
 	<build>
 		<sourceDirectory>src/main/resources</sourceDirectory>

@@ -1,6 +1,6 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
+#set($symbol_pound = '#')
+#set($symbol_dollar = '$')
+#set($symbol_escape = '\')
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -12,6 +12,9 @@
 		<version>${version}</version>
 		<relativePath>../${package}-build</relativePath>
 	</parent>
+	<organization>
+		<name>${providerName}</name>
+	</organization>
 	<build>
 		<plugins>
 			<plugin>
@@ -23,20 +26,24 @@
 						<configuration>
 							<tasks>
 								<delete dir="${symbol_dollar}{web-deploy-artifact}/target" />
-								<delete dir="${symbol_dollar}{web-deploy-artifact}/src/main/webapp/plugins" />
-								<delete dir="${symbol_dollar}{web-deploy-artifact}/src/main/webapp/features" />
+								<delete
+									dir="${symbol_dollar}{web-deploy-artifact}/src/main/webapp/plugins" />
+								<delete
+									dir="${symbol_dollar}{web-deploy-artifact}/src/main/webapp/features" />
 								<delete>
-									<fileset dir="${symbol_dollar}{web-deploy-artifact}/src/main/webapp/"
+									<fileset
+										dir="${symbol_dollar}{web-deploy-artifact}/src/main/webapp/"
 										includes="*.jar" />
 								</delete>
 								<delete>
-									<fileset dir="${symbol_dollar}{web-deploy-artifact}/src/main/webapp/"
+									<fileset
+										dir="${symbol_dollar}{web-deploy-artifact}/src/main/webapp/"
 										includes="*.zip" />
 								</delete>
 								<copy todir="${symbol_dollar}{web-deploy-artifact}/src/main/webapp/">
 									<fileset dir="${symbol_dollar}{project.build.directory}/repository" />
 								</copy>
-								
+
 							</tasks>
 						</configuration>
 						<goals>
