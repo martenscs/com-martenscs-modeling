@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>maven-archetype</packaging>
 
-	<name>_tycho-quick-external</name>
+	<name>tycho-features-site-archetype</name>
 
 	<build>
 		<extensions>
@@ -28,4 +28,14 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<description>Creates Tycho eclipse feature set for OSGi development.
+A feature set includes:
+1. Eclipse Feature - Standard eclipse feature.
+2. Build parent - 
+3. Eclipse Target definition for p2 associated repository
+4. Prepare - prepares any external OSGi bundles to be included in your target definition
+5. P2 Repository
+6. A WEB app to deploy your repository as a war
+
+ </description>
 </project>

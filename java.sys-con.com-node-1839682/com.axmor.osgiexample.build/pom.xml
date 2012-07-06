@@ -8,7 +8,7 @@
 
 	<properties>
 		<!-- Latest Tycho version -->
-		<tycho-version>0.14.1</tycho-version>
+		<tycho-version>0.15.0</tycho-version>
 		<web-deploy-artifact>../com.martenscs.osgi.simple-website</web-deploy-artifact>
 	</properties>
 	<repositories>
@@ -26,7 +26,7 @@
 		<!-- Orbit Repository -->
 		<repository>
 			<id>orbit</id>
-			<url>http://download.eclipse.org/tools/orbit/downloads/drops/S20120428190502/repository/</url>
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/</url>
 			<layout>p2</layout>
 		</repository>
 		<!-- Eclipse Product Repository -->
