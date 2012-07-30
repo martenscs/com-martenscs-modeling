@@ -1,6 +1,6 @@
 #set($symbol_pound = '#')
 #set($symbol_dollar = '$')
-#set($symbol_escape = '\')
+#set($symbol_escape ='\')
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -126,9 +126,9 @@
 			</plugin>
 			<!-- Publish a p2 repository from the plain dbaccess bundles -->
 			<plugin>
-				<groupId>org.sonatype.tycho</groupId>
+				<groupId>org.eclipse.tycho.extras</groupId>
 				<artifactId>tycho-p2-extras-plugin</artifactId>
-				<version>0.11.0-SNAPSHOT</version>
+				<version>0.15.0</version>
 				<executions>
 					<execution>
 						<phase>prepare-package</phase>
@@ -141,6 +141,27 @@
 					<compress>false</compress>
 				</configuration>
 			</plugin>
+			         <plugin>
+                <groupId>com.martenscs</groupId>
+                <artifactId>tycho-target-update-plugin</artifactId>
+                <version>0.1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>update-target</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <featureFile>../${package}/feature.xml</featureFile>
+                    <targetFile>../${package}-target/${package}.target</targetFile>
+                    <featureId>${package}</featureId>
+                    <featureVersion>0.0.1.qualifier</featureVersion>
+                    <featureProvider>${providerName}</featureProvider>
+                    <featureLabel>${providerName} ${package}</featureLabel>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 </project>

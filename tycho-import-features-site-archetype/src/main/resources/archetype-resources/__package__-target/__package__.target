@@ -1,0 +1,13 @@
+#set($symbol_pound = '#')
+#set($symbol_dollar = '$')
+#set($symbol_escape = '\')
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+
+<target name="${package}" sequenceNumber="0">
+<locations>
+<location includeAllPlatforms="true" includeMode="slicer" includeSource="false" type="InstallableUnit">
+</location>
+</locations>
+</target>
+

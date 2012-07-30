@@ -23,6 +23,7 @@ import org.eclipse.tycho.p2.target.facade.TargetDefinitionSyntaxException;
 
 import de.pdark.decentxml.Document;
 import de.pdark.decentxml.Element;
+import de.pdark.decentxml.Node;
 import de.pdark.decentxml.Text;
 import de.pdark.decentxml.XMLIOSource;
 import de.pdark.decentxml.XMLParseException;
@@ -88,13 +89,30 @@ public final class TargetDefinitionFile implements TargetDefinition {
             return dom.getAttributeValue(TYPE);
         }
 
+        public void removeUnits() {
+            List<Node> txtNodes = new ArrayList<Node>();
+            for (Node unitDom : dom.getNodes())
+                if (unitDom.getType().toString().equals("TEXT"))
+                    txtNodes.add(unitDom);
+
+            for (int j = 0; j < txtNodes.size(); j++)
+                if (j >= 2)
+                    dom.removeNode(txtNodes.get(j));
+
+            for (Element unitDom : dom.getChildren(UNIT))
+                dom.removeNode(unitDom);
+
+        }
+
         public void addUnit(String unit) {
             for (org.eclipse.tycho.p2.target.facade.TargetDefinition.Unit installedUnit : getUnits()) {
                 if (installedUnit.getId().equals(unit))
                     return;
             }
+
             dom.addNode(new Element(UNIT).addAttribute(ID, unit).addAttribute(VERSION, VERSION_MODEL)).addNode(
                     new Text(NEWLINE));
+
         }
 
         public IncludeMode getIncludeMode() {
